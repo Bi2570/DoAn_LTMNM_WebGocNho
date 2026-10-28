@@ -1,0 +1,187 @@
+/* base.css - màu sắc, chữ, thành phần dùng chung cho cả cửa hàng và trang quản trị.
+   Bootstrap 5 được nạp từ CDN trước file này, nên các biến bên dưới ghi đè màu mặc định. */
+:root {
+  --ink: #1B2A4A;
+  --cobalt: #5B7DB1;        /* xanh nước biển pastel - đổi ở đây để đổi cả site */
+  --cobalt-dark: #46618F;
+  --marker: #FFD84D;
+  --paper: #F4F6FA;
+  --line: #DDE2EC;
+  --muted: #5E6B85;
+  --ok: #1E8E5A;
+  --danger: #D64545;
+
+  --bs-primary: #5B7DB1;
+  --bs-primary-rgb: 91, 125, 177;
+  --bs-link-color: #5B7DB1;
+  --bs-link-color-rgb: 91, 125, 177;
+  --bs-link-hover-color: #46618F;
+  --bs-body-color: #1B2A4A;
+  --bs-body-font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bs-border-color: #DDE2EC;
+  --bs-border-radius: .5rem;
+  --bs-secondary-color: #5E6B85;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.25; letter-spacing: -.01em; }
+a { text-underline-offset: 3px; }
+.text-muted { color: var(--muted) !important; }
+
+:focus-visible {
+  outline: 3px solid rgba(91, 125, 177, .5);
+  outline-offset: 2px;
+}
+
+/* Logo chữ (dùng cho cả cửa hàng và trang quản trị) */
+.brand {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-weight: 700; font-size: 1.2rem; color: var(--ink); text-decoration: none;
+}
+.brand:hover { color: var(--ink); }
+.brand--light, .brand--light:hover { color: #fff; }
+.brand__mark {
+  display: grid; place-items: center; width: 2.2rem; height: 2.2rem;
+  border-radius: .5rem; background: var(--marker); color: var(--ink); font-size: 1rem;
+}
+
+/* Nút */
+.btn { font-weight: 600; }
+.btn-primary {
+  --bs-btn-bg: #5B7DB1; --bs-btn-border-color: #5B7DB1;
+  --bs-btn-hover-bg: #46618F; --bs-btn-hover-border-color: #46618F;
+  --bs-btn-active-bg: #3A5378; --bs-btn-active-border-color: #3A5378;
+  --bs-btn-disabled-bg: #5B7DB1; --bs-btn-disabled-border-color: #5B7DB1;
+}
+.btn-outline-primary {
+  --bs-btn-color: #5B7DB1; --bs-btn-border-color: #5B7DB1;
+  --bs-btn-hover-bg: #5B7DB1; --bs-btn-hover-border-color: #5B7DB1;
+  --bs-btn-active-bg: #46618F; --bs-btn-active-border-color: #46618F;
+}
+
+/* Form */
+.form-label { font-weight: 600; font-size: .9rem; margin-bottom: .3rem; }
+.form-control, .form-select { border-color: #C6CEDD; }
+.form-control:focus, .form-select:focus {
+  border-color: var(--cobalt);
+  box-shadow: 0 0 0 .2rem rgba(91, 125, 177, .18);
+}
+.form-control.is-invalid:focus { box-shadow: 0 0 0 .2rem rgba(214, 69, 69, .2); }
+.qty { width: 5.5rem; }
+
+/* Bảng */
+.table { --bs-table-bg: transparent; }
+.table > :not(caption) > * > * { padding: .8rem .9rem; }
+.table thead th {
+  font-weight: 600; font-size: .85rem; color: var(--muted);
+  border-bottom: 1px solid var(--line); white-space: nowrap;
+}
+
+/* Khối nền trắng dùng chung */
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  padding: 1.25rem;
+}
+.table-responsive.panel { padding: .25rem .5rem; }
+
+/* Phân trang */
+.pagination {
+  --bs-pagination-color: #5B7DB1;
+  --bs-pagination-hover-color: #46618F;
+  --bs-pagination-active-bg: #5B7DB1;
+  --bs-pagination-active-border-color: #5B7DB1;
+}
+
+/* Khung ảnh giữ chỗ (thay bằng thẻ img khi có ảnh thật) */
+.ph {
+  display: grid; place-items: center; position: relative;
+  color: var(--ink); font-size: 2.75rem; border-radius: .5rem;
+}
+.ph-1 { background: #DCE4FF; }
+.ph-2 { background: #FFF0B8; }
+.ph-3 { background: #D9F2E6; }
+.ph-4 { background: #FBE0DD; }
+.ph-5 { background: #E7E0F7; }
+.ph-6 { background: #DDEFF5; }
+.ph-sm { width: 2.75rem; height: 2.75rem; flex: none; font-size: 1.15rem; border-radius: .4rem; }
+
+/* Giá và nhãn giảm giá */
+.price { font-weight: 700; }
+.price-old { color: var(--muted); text-decoration: line-through; font-weight: 400; margin-left: .5rem; font-size: .9em; }
+.tag-sale {
+  position: absolute; top: .6rem; left: .6rem;
+  background: var(--marker); color: var(--ink);
+  font-weight: 700; font-size: .75rem; padding: .15rem .5rem; border-radius: .25rem;
+}
+
+/* Trạng thái đơn hàng và hiển thị */
+.status {
+  display: inline-block; padding: .15rem .6rem; border-radius: 999px;
+  font-size: .8rem; font-weight: 600; white-space: nowrap;
+}
+.status--pending    { background: #FFF1C2; color: #7A5B00; }
+.status--processing { background: #DCE4FF; color: #1F3FB5; }
+.status--shipping   { background: #E7E0F7; color: #4B34A0; }
+.status--done       { background: #D9F2E6; color: #146B43; }
+.status--cancelled  { background: #E8EBF1; color: #4A566E; }
+
+/* Tình trạng kho */
+.stock { font-weight: 600; margin: 0; }
+.stock--ok { color: var(--ok); }
+.stock--low { color: #A15C00; }
+.stock--out { color: var(--danger); }
+
+/* Trạng thái rỗng */
+.empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* Thông báo nổi, tự mờ sau 5 giây, không cần JavaScript */
+.flash-stack {
+  position: fixed; top: 1rem; right: 1rem; z-index: 1100;
+  display: flex; flex-direction: column; gap: .5rem;
+  width: min(24rem, calc(100vw - 2rem)); pointer-events: none;
+}
+.flash {
+  display: flex; align-items: flex-start; gap: .6rem;
+  padding: .8rem 1rem; background: #fff;
+  border: 1px solid var(--line, #DDE2EC); border-left-width: 5px; border-radius: .6rem;
+  box-shadow: 0 .5rem 1.25rem rgba(27, 42, 74, .15);
+  pointer-events: auto;
+  animation: flash-hide .4s ease 5s forwards;
+}
+.flash i { font-size: 1.15rem; line-height: 1.4; }
+.flash--ok { border-left-color: var(--ok, #1E8E5A); }
+.flash--ok i { color: var(--ok, #1E8E5A); }
+.flash--error { border-left-color: var(--danger, #D64545); }
+.flash--error i { color: var(--danger, #D64545); }
+@keyframes flash-hide {
+  to { opacity: 0; visibility: hidden; transform: translateY(-.5rem); }
+}
+
+/* Thông báo nổi khi thêm vào giỏ bằng AJAX */
+.toast-stack {
+  position: fixed; top: 1rem; right: 1rem; z-index: 1100;
+  display: flex; flex-direction: column; gap: .5rem;
+  width: min(24rem, calc(100vw - 2rem)); pointer-events: none;
+}
+.toast-msg {
+  display: flex; align-items: flex-start; gap: .6rem;
+  padding: .8rem 1rem; background: #fff;
+  border: 1px solid var(--line, #DDE2EC); border-left-width: 5px; border-radius: .6rem;
+  box-shadow: 0 .5rem 1.25rem rgba(27, 42, 74, .15); pointer-events: auto;
+}
+.toast-msg i { font-size: 1.15rem; line-height: 1.4; }
+.toast-msg--ok { border-left-color: var(--ok, #1E8E5A); }
+.toast-msg--ok i { color: var(--ok, #1E8E5A); }
+.toast-msg--error { border-left-color: var(--danger, #D64545); }
+.toast-msg--error i { color: var(--danger, #D64545); }

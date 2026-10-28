@@ -1,0 +1,68 @@
+/* admin.css - giao diện quản trị */
+body.admin { background: var(--paper); }
+
+.admin-shell { display: grid; grid-template-columns: 15rem 1fr; min-height: 100vh; }
+.admin-side {
+  background: var(--ink); color: #C9D2E6; padding: 1.25rem 1rem;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.admin-side__label { margin: 1.25rem .5rem .25rem; font-size: .85rem; color: #93A0BD; }
+.admin-nav { list-style: none; margin: 0; padding: 0; display: grid; gap: .15rem; }
+.admin-nav__link {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .6rem .75rem; border-radius: .5rem;
+  color: #C9D2E6; text-decoration: none; font-weight: 500;
+  border-left: 4px solid transparent;
+}
+.admin-nav__link:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+.admin-nav__link.is-active { background: rgba(255, 255, 255, .1); color: #fff; border-left-color: var(--marker); font-weight: 600; }
+.admin-side__store { margin-top: auto; padding: .6rem .75rem; color: #C9D2E6; text-decoration: none; }
+.admin-side__store:hover { color: #fff; }
+
+.admin-main { min-width: 0; }
+.admin-top {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem;
+  background: #fff; border-bottom: 1px solid var(--line); padding: .8rem 1.5rem;
+}
+.admin-top__user { display: flex; align-items: center; gap: .75rem; }
+.role-badge { background: var(--marker); color: var(--ink); font-size: .8rem; font-weight: 700; padding: .15rem .55rem; border-radius: .25rem; }
+.admin-content { padding: 1.5rem; max-width: 80rem; }
+
+@media (max-width: 991.98px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-side { position: static; height: auto; }
+  .admin-nav { grid-template-columns: repeat(2, 1fr); }
+  .admin-side__store { margin-top: .5rem; }
+}
+
+/* Thẻ thống kê */
+.stat { display: flex; align-items: center; gap: 1rem; background: #fff; border: 1px solid var(--line); border-radius: .75rem; padding: 1.1rem; height: 100%; }
+.stat > i { font-size: 1.6rem; color: var(--cobalt); line-height: 1; }
+.stat__label { margin: 0; color: var(--muted); font-size: .9rem; }
+.stat__value { margin: 0; font-size: 1.5rem; font-weight: 700; }
+
+/* Thanh trạng thái bằng CSS */
+.bars { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.bar { height: .55rem; border-radius: 999px; background: var(--paper); overflow: hidden; margin-top: .3rem; }
+.bar > span { display: block; height: 100%; background: var(--cobalt); border-radius: 999px; }
+.low-list li { padding: .5rem 0; border-bottom: 1px solid var(--line); }
+.low-list li:last-child { border-bottom: 0; }
+
+/* Thanh tìm kiếm trên bảng */
+.toolbar { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+.toolbar .form-control { flex: 1 1 14rem; }
+.toolbar .form-select { flex: 0 1 12rem; }
+
+/* Form hẹp */
+.form-narrow { max-width: 40rem; }
+.upload-preview { aspect-ratio: 4 / 3; font-size: 3rem; }
+
+/* Hộp xác nhận xóa chỉ dùng CSS: nút Xóa trỏ tới #id, :target hiện hộp, nút Hủy trỏ tới #close */
+.css-modal {
+  display: none; position: fixed; inset: 0; z-index: 1080;
+  align-items: center; justify-content: center; padding: 1rem;
+  background: rgba(27, 42, 74, .55);
+}
+.css-modal:target { display: flex; }
+.css-modal__box { background: #fff; border-radius: .75rem; max-width: 26rem; width: 100%; padding: 1.5rem; }
